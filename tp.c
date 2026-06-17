@@ -7,7 +7,7 @@ void PANTALLA(int *opt){
     printf("4- Volumen de material producido\n");
     printf("5- Salir\n");
 
-    printf("SU OPCI�N: ");
+    printf("SU OPCIÓN: ");
 
     scanf("%d", opt);
 
@@ -139,14 +139,14 @@ void FACTOR_DE_DESGASTE(float *potenciaPromedio, int *minutosOperacionTotal, flo
     *factorDesgaste = *potenciaPromedio*1000000/(float)*minutosOperacionTotal;
 
     printf("\nPotencia promedio: %.1f MW\n", *potenciaPromedio);
-    printf("Minutos de operaci�n: %d\n", *minutosOperacionTotal);
+    printf("Minutos de operación: %d\n", *minutosOperacionTotal);
     printf("Factor de desgaste: %f W/min\n", *factorDesgaste);
 }
 
 int main(){
     CARGA();
     int opt;
-    printf("Bienvenido al men�");
+    printf("Bienvenido al menú");
     PANTALLA(&opt);
 
     while (opt != 0 && opt != 5) {
@@ -163,7 +163,7 @@ int main(){
             break;
         case 2:
             int inCodigoElemento;
-            printf("\nIngrese un c�digo de elemento: ");
+            printf("\nIngrese un código de elemento: ");
             scanf("%d", &inCodigoElemento);
             while (inCodigoElemento < 1 || inCodigoElemento > 9){
             printf("ERROR: Vuelva a ingresar un elemento: ");
@@ -178,7 +178,7 @@ int main(){
             FACTOR_DE_DESGASTE(&potenciaPromedio, &minutosOperacionTotal, &factorDesgaste);
             break;
         case 4:
-            printf("\nSe seleccion� la opci�n 4\n");
+            printf("\nSe seleccionó la opción 4\n");
             break;
         }
         PANTALLA(&opt);
