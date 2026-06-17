@@ -1,23 +1,64 @@
 #include <stdio.h>
 
 void PANTALLA(int *opt){
-    printf("1- Máximo de horas operadas\n");
+    printf("\n1- Maximo de horas operadas\n");
     printf("2- Mostrar rendimiento\n");
     printf("3- Potencia promedio\n");
     printf("4- Volumen de material producido\n");
     printf("5- Salir\n");
 
-    printf("SU OPCIÓN: ");
+    printf("SU OPCI�N: ");
 
     scanf("%d", opt);
 
     while (*opt < 0 || *opt > 5)
     {
-        printf("ERROR: Vuelva a seleccionar una opción: ");
+        printf("ERROR: Vuelva a seleccionar una opci�n: ");
         scanf("%d", opt);
     }
 }
 
+void CARGA(){
+    FILE *datos;
+    int codigoElemento, numeroMasico, dia, mes, minutosOperacion;
+    float masaProducida, potenciaOperacion;
+    char turno;
+    datos = fopen("produccion2025_etapa1.txt", "r");
+
+    int N[11];
+
+
+    fscanf(datos, "%d,%d,%f,%d,%d,%d,%f,%c", &codigoElemento, &numeroMasico, &masaProducida, &dia, &mes, &minutosOperacion, &potenciaOperacion, &turno);
+    //printf("%d,%d,%f,%d,%d,%d,%f,%c\n", codigoElemento, numeroMasico, masaProducida, dia, mes, minutosOperacion, potenciaOperacion, turno);
+
+    for(int i = 0; i<13; i++){
+        N[i]=0;
+    }
+    while (!feof(datos)) {
+        if(N[mes-1] < minutosOperacion){
+            N[mes-1] = minutosOperacion;
+
+
+        }
+
+
+
+
+
+
+
+
+
+        fscanf(datos, "%d,%d,%f,%d,%d,%d,%f,%c", &codigoElemento, &numeroMasico, &masaProducida, &dia, &mes, &minutosOperacion, &potenciaOperacion, &turno);
+        //printf("%d,%d,%f,%d,%d,%d,%f,%c\n", codigoElemento, numeroMasico, masaProducida, dia, mes, minutosOperacion, potenciaOperacion, turno);
+        }
+        for(int j= 0; j<12;j++){
+            printf("mes:%d | %d\n",j, N[j]);
+            }
+    fclose(datos);
+
+
+}
 int OPERACION_POR_MES(int inMes){
     FILE *datos;
     int codigoElemento, numeroMasico, dia, mes, minutosOperacion;
@@ -80,6 +121,7 @@ void FACTOR_DE_DESGASTE(float *potenciaPromedio, int *minutosOperacionTotal, flo
     datos = fopen("produccion2025_etapa1.txt", "r");
 
     fscanf(datos, "%d,%d,%f,%d,%d,%d,%f,%c", &codigoElemento, &numeroMasico, &masaProducida, &dia, &mes, &minutosOperacion, &potenciaOperacion, &turno);
+    printf("%d,%d,%f,%d,%d,%d,%f,%c\n", codigoElemento, numeroMasico, masaProducida, dia, mes, minutosOperacion, potenciaOperacion, turno);
     int contador = 1;
     float potenciaTotal = 0;
 
@@ -89,6 +131,7 @@ void FACTOR_DE_DESGASTE(float *potenciaPromedio, int *minutosOperacionTotal, flo
         contador++;
 
         fscanf(datos, "%d,%d,%f,%d,%d,%d,%f,%c", &codigoElemento, &numeroMasico, &masaProducida, &dia, &mes, &minutosOperacion, &potenciaOperacion, &turno);
+        printf("%d,%d,%f,%d,%d,%d,%f,%c\n", codigoElemento, numeroMasico, masaProducida, dia, mes, minutosOperacion, potenciaOperacion, turno);
     }
     fclose(datos);
 
@@ -96,13 +139,14 @@ void FACTOR_DE_DESGASTE(float *potenciaPromedio, int *minutosOperacionTotal, flo
     *factorDesgaste = *potenciaPromedio*1000000/(float)*minutosOperacionTotal;
 
     printf("\nPotencia promedio: %.1f MW\n", *potenciaPromedio);
-    printf("Minutos de operación: %d\n", *minutosOperacionTotal);
+    printf("Minutos de operaci�n: %d\n", *minutosOperacionTotal);
     printf("Factor de desgaste: %f W/min\n", *factorDesgaste);
 }
 
 int main(){
+    CARGA();
     int opt;
-    printf("Bienvenido al menú");
+    printf("Bienvenido al men�");
     PANTALLA(&opt);
 
     while (opt != 0 && opt != 5) {
@@ -119,7 +163,7 @@ int main(){
             break;
         case 2:
             int inCodigoElemento;
-            printf("\nIngrese un código de elemento: ");
+            printf("\nIngrese un c�digo de elemento: ");
             scanf("%d", &inCodigoElemento);
             while (inCodigoElemento < 1 || inCodigoElemento > 9){
             printf("ERROR: Vuelva a ingresar un elemento: ");
@@ -134,7 +178,7 @@ int main(){
             FACTOR_DE_DESGASTE(&potenciaPromedio, &minutosOperacionTotal, &factorDesgaste);
             break;
         case 4:
-            printf("\nSe seleccionó la opción 4\n");
+            printf("\nSe seleccion� la opci�n 4\n");
             break;
         }
         PANTALLA(&opt);
