@@ -1,0 +1,9 @@
+molibdeno Mo 42 99 98.9077 10.28
+iodo I  53 131 130.9061 4.93
+cromo Cr 24 51 50.9448 7.19
+samario Sm 62 153 150.36 7.52
+fosforo P  15 32 30.974 1.82
+iridio Ir 77 192 192.22 22.56
+lutecio Lu 71 177 174.97 9.84
+cesio Cs 55 137 132.91 1.93
+cobalto Co 27 60 58.933 8.90
