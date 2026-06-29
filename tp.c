@@ -210,7 +210,7 @@ void MENU(int OperacionPorMes[11], struct Elemento elementos[8], float potenciaT
         printf("4- Volumen de material producido\n");
         printf("5- Salir\n");
 
-        printf("SU OPCIÓN: ");
+        printf("SU OPCION: ");
         scanf("%d", &opt);
 
         // validacion
