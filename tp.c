@@ -181,27 +181,22 @@ void FACTOR_DE_DESGASTE(struct Elemento elementos[8], float potenciaTotal, int t
 
 /*
 4
-se pide un simbolo quimico y se busca, si se encuentra uso la variable bandera como "encontrado"
-y pos para guardar la posicion
+se pide un simbolo quimico y se busca, si se encuentra sale del while con el ultimo valor en i
 */
 void VOLUMEN(struct Elemento elementos[8], char elemento[3]){
     float volumen;
-    int bandera=0;
-    int pos;
+    int i = 0;
     
-    // busca el elemento
-    for (int i = 0; i < 9; i++){
-        if(strcmp(elementos[i].Simbolo, elemento)==0){
-            bandera=1; // encontrado
-            pos = i;
-        }
+    // avanza mientras no encuentre el elemento o llegue a 9
+    while (i < 9 && strcmp(elementos[i].Simbolo, elemento) != 0){
+        i++;
     }
     
-    if(bandera==0){
-        printf("ERROR: No se encontró ningun elemento\n");
-    } else{
-        volumen = elementos[pos].MasaProducidaTotal / elementos[pos].Densidad;
-        printf("\nSe produjeron: %.2f cm3 de %s\n", volumen, elementos[pos].Nombre);
+    if(i == 9){
+        printf("ERROR: No se encontro ningun elemento\n");
+    } else {
+        volumen = elementos[i].MasaProducidaTotal / elementos[i].Densidad;
+        printf("\nSe produjeron: %.2f cm3 de %s\n", volumen, elementos[i].Nombre);
     }
 }
 
