@@ -204,8 +204,8 @@ void MENU(int OperacionPorMes[11], struct Elemento elementos[8], float potenciaT
     int opt = 0;
     
     while(opt != 5) {
-        printf("\n1- Máximo de horas operadas\n");
-        printf("2- Listar elementos según rendimiento\n");
+        printf("\n1- Maximo de horas operadas\n");
+        printf("2- Listar elementos segun rendimiento\n");
         printf("3- Potencia promedio\n");
         printf("4- Volumen de material producido\n");
         printf("5- Salir\n");
@@ -215,13 +215,13 @@ void MENU(int OperacionPorMes[11], struct Elemento elementos[8], float potenciaT
 
         // validacion
         while (opt < 1 || opt > 5){
-            printf("ERROR: Vuelva a seleccionar una opción: ");
+            printf("ERROR: Vuelva a seleccionar una opcion: ");
             scanf("%d", &opt);
         }
         
         switch (opt){
         case 1:
-            printf("\nEl mes con más horas operadas es: %s\n", OPERACION_POR_MES(OperacionPorMes));
+            printf("\nEl mes con mas horas operadas es: %s\n", OPERACION_POR_MES(OperacionPorMes));
             break;
         case 2:
             printf("\n");
@@ -252,7 +252,7 @@ int main(){
     int totalOperaciones = 0; 
 
     CARGA(elementos, OperacionPorMes, &potenciaTotal, &totalOperaciones);
-    printf("Bienvenido al menú\n");
+    printf("Bienvenido al menu\n");
     
     MENU(OperacionPorMes, elementos, potenciaTotal, totalOperaciones);
     
