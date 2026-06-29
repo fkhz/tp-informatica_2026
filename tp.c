@@ -3,7 +3,7 @@
 
 //estructura Elemento para almacenar los datos de cada radioisopto
 typedef struct Elemento{
-    char Simbolo[3], Nombre[13];
+    char Simbolo[3], Nombre[11];
     int NumeroMasico, MinutosOperacion, OperacionesTotales;
     float Rendimiento, MasaProducidaTotal, Densidad;
 } Elemento;
@@ -13,7 +13,7 @@ carga
 inicializa el array de elementos y los totales de operacion por mes.
 va sumando las operaciones, la potencia y la masa a medida que lee la producción.
  */
-void CARGA(struct Elemento elementos[9], int OperacionPorMes[12], float *potenciaTotal, int *totalOperaciones){
+void CARGA(struct Elemento elementos[8], int OperacionPorMes[11], float *potenciaTotal, int *totalOperaciones){
     FILE *arch1;
     char Simbolo_1[3], Turno;
     int NumeroMasico_1, Dia, Mes, MinutosOperacion;
@@ -21,7 +21,7 @@ void CARGA(struct Elemento elementos[9], int OperacionPorMes[12], float *potenci
     arch1 = fopen("produccion2025.txt", "r");
     
     FILE *arch2;
-    char NombreElemento[13], Simbolo_2[3];
+    char NombreElemento[11], Simbolo_2[3];
     int NumeroAtomico, NumeroMasico_2;
     float MasaMolar, Densidad;
     arch2 = fopen("radioisotopos.txt", "r");
@@ -84,7 +84,7 @@ void CARGA(struct Elemento elementos[9], int OperacionPorMes[12], float *potenci
 busca el mes con la mayor cantidad de minutos operados
 pedia q sea funcion asi que segun la posicion del indice usa el return q le toque
  */
-char* OPERACION_POR_MES(int OperacionPorMes[12]){
+char* OPERACION_POR_MES(int OperacionPorMes[11]){
     int mins = 0;
     int pos = 0;
     
@@ -118,7 +118,7 @@ char* OPERACION_POR_MES(int OperacionPorMes[12]){
 calcula el rendimiento (g/h) de cada elemento en base a su produccion
 y tiempo operado, los ordena de mayor a menor y muestra el resultado
 */
-void MAX_RENDIMIENTO(struct Elemento elementos[9]){
+void MAX_RENDIMIENTO(struct Elemento elementos[8]){
     struct Elemento aux;
 
     // calcular el rendimiento de cada elemento
@@ -151,7 +151,7 @@ void MAX_RENDIMIENTO(struct Elemento elementos[9]){
 uso la potencia total acumulada del reactor y el total de operaciones
 calculo la potencia promedio y dsp el factor de desgaste
  */
-void FACTOR_DE_DESGASTE(struct Elemento elementos[9], float potenciaTotal, int totalOperaciones){
+void FACTOR_DE_DESGASTE(struct Elemento elementos[8], float potenciaTotal, int totalOperaciones){
     int minutosOperacionTotal = 0;
     float potenciaPromedioMW;
     float potenciaPromedioW;
@@ -179,7 +179,7 @@ void FACTOR_DE_DESGASTE(struct Elemento elementos[9], float potenciaTotal, int t
 se pide un simbolo quimico y se busca, si se encuentra uso la variable bandera como "encontrado"
 y pos para guardar la posicion
 */
-void VOLUMEN(struct Elemento elementos[9], char elemento[3]){
+void VOLUMEN(struct Elemento elementos[8], char elemento[3]){
     float volumen;
     int bandera=0;
     int pos;
@@ -200,7 +200,7 @@ void VOLUMEN(struct Elemento elementos[9], char elemento[3]){
     }
 }
 
-void MENU(int OperacionPorMes[12], struct Elemento elementos[9], float potenciaTotal, int totalOperaciones){
+void MENU(int OperacionPorMes[11], struct Elemento elementos[8], float potenciaTotal, int totalOperaciones){
     int opt = 0;
     
     while(opt != 5) {
@@ -244,9 +244,9 @@ void MENU(int OperacionPorMes[12], struct Elemento elementos[9], float potenciaT
 }
 
 int main(){
-    struct Elemento elementos[9];
+    struct Elemento elementos[8];
     // para el 1
-    int OperacionPorMes[12];
+    int OperacionPorMes[11];
     //datos del reactor
     float potenciaTotal = 0;
     int totalOperaciones = 0; 
