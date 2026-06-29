@@ -63,13 +63,18 @@ void CARGA(struct Elemento elementos[8], int OperacionPorMes[11], float *potenci
         *potenciaTotal += PotenciaOperacion;
         *totalOperaciones += 1;
         
-        // acumuladores de los elementos sirve para el 2 y 4
-        for(int k = 0; k < 9; k++){
-            if(strcmp(elementos[k].Simbolo, Simbolo_1) == 0){
-                elementos[k].MinutosOperacion += MinutosOperacion;
-                elementos[k].MasaProducidaTotal += masaProducida;
-                elementos[k].OperacionesTotales++;
-            }
+        int k = 0;
+
+        // avanza mientras no haya coincidencia
+        while ((strcmp(elementos[k].Simbolo, Simbolo_1) != 0) && k < 9) {
+            k++;
+        }
+
+        // sale con el valor de k que coincidio
+        if(k < 9){
+            elementos[k].MinutosOperacion += MinutosOperacion;
+            elementos[k].MasaProducidaTotal += masaProducida;
+            elementos[k].OperacionesTotales++;
         }
 
         fscanf(arch1, "%s %d %f %d %d %d %f %c", Simbolo_1, &NumeroMasico_1, &masaProducida, &Dia, &Mes, &MinutosOperacion, &PotenciaOperacion, &Turno);
